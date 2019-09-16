@@ -29,11 +29,11 @@ class PostModel {
   }
 
   void toggleLikeFor(User user) {
-    if (isLikedBy(user)) {
-      likes.removeWhere((like) => like.user.name == user.name);
-    } else {
-      addLikeIfUnlikedFor(user);
-    }
+    addLikeIfUnlikedFor(user);
+  }
+
+  void removeReaction(User user) {
+    likes.removeWhere((like) => like.user.name == user.name);
   }
 
   PostModel({

@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_reaction_button/flutter_reaction_button.dart';
+import 'package:timeago/timeago.dart' as timeago;
 import 'package:unihub/home/avatar_widget.dart';
-import 'package:unihub/home/heart_icon_animator.dart';
+import 'package:unihub/home/reactions.dart';
 import 'package:unihub/models/post_model.dart';
 import 'package:unihub/models/user.dart';
-
-import 'heart_overlay_animator.dart';
 
 class Post extends StatefulWidget {
   final PostModel post;
@@ -35,6 +35,10 @@ class _PostState extends State<Post> {
 
   void _toggleIsLiked() {
     setState(() => widget.post.toggleLikeFor(currentUser));
+  }
+
+  void _toggleIsNotLiked() {
+    setState(() => widget.post.removeReaction(currentUser));
   }
 
   @override
@@ -84,21 +88,15 @@ class _PostState extends State<Post> {
                   height: double.infinity,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(16),
-                    child: GestureDetector(
-                      onDoubleTap: _onDoubleTapLikePhoto,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: <Widget>[
-                          Image.network(
-                            'https://i.imgur.com/5VOiHDo.jpg',
-                            fit: BoxFit.cover,
-                            height: double.infinity,
-                          ),
-                          HeartOverlayAnimator(
-                              triggerAnimationStream:
-                                  _doubleTapImageEvents.stream)
-                        ],
-                      ),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: <Widget>[
+                        Image.network(
+                          widget.post.imageUrls[0],
+                          fit: BoxFit.cover,
+                          height: double.infinity,
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -109,52 +107,48 @@ class _PostState extends State<Post> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(left: 16),
+                            child: FlutterReactionButtonCheck(
+                              onReactionChanged:
+                                  (reaction, selectedIndex, isChecked) {
+                                (isChecked)
+                                    ? _toggleIsLiked()
+                                    : _toggleIsNotLiked();
+                              },
+                              reactions: facebookReactions,
+                              initialReaction: defaultInitialReaction,
+                              selectedReaction: facebookReactions[0],
+                            ),
+                          ),
+                          if (widget.post.likes.isNotEmpty)
                             Padding(
-                              padding: const EdgeInsets.only(left: 16),
-                              child: HeartIconAnimator(
-                                isLiked: widget.post.isLikedBy(currentUser),
-                                size: 28.0,
-                                onTap: _toggleIsLiked,
-                                triggerAnimationStream:
-                                    _doubleTapImageEvents.stream,
+                              padding: const EdgeInsets.only(left: 8),
+                              child: Row(
+                                children: <Widget>[
+                                  Text(widget.post.likes[0].user.name,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold)),
+                                  if (widget.post.likes.length > 1) ...[
+                                    Text(' and'),
+                                    Text(
+                                        ' ${widget.post.likes.length - 1} others',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold)),
+                                  ]
+                                ],
                               ),
                             ),
-                            if (widget.post.likes.isNotEmpty)
-                              Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      bottom: 8.0, left: 8),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Text('Liked by '),
-                                      Text(widget.post.likes[0].user.name,
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold)),
-                                      if (widget.post.likes.length > 1) ...[
-                                        Text(' and'),
-                                        Text(
-                                            ' ${widget.post.likes.length - 1} others',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                      ]
-                                    ],
-                                  ),
-                                ),
-                              ),
-                          ],
-                        ),
+                        ],
                       ),
                       Row(
                         children: <Widget>[
                           IconButton(
                             icon: Icon(EvaIcons.moreVertical),
                             onPressed: () {},
-                            color: Colors.white,
+                            color: Theme.of(context).accentColor,
                           )
                         ],
                       )
@@ -176,13 +170,24 @@ class _PostState extends State<Post> {
               color: Theme.of(context).primaryColorDark,
               child: Padding(
                 padding: const EdgeInsets.only(
-                    left: 24, right: 24, top: 32, bottom: 16),
+                    left: 24, right: 24, top: 32, bottom: 32),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      widget.post.user.name,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          widget.post.user.name,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          timeago.format(widget.post.postedAt),
+                          style: TextStyle(fontWeight: FontWeight.w200),
+                        ),
+                      ],
                     ),
                     Text(
                       widget.post.description,

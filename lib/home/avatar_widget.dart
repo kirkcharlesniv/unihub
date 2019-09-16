@@ -29,11 +29,6 @@ class AvatarWidget extends StatelessWidget {
       ],
     ),
   );
-  static const _whiteBorderDecoration = BoxDecoration(
-    shape: BoxShape.circle,
-    border:
-        Border.fromBorderSide(BorderSide(color: Color(0xff303439), width: 3.0)),
-  );
   static const _greyBoxShadowDecoration = BoxDecoration(
     shape: BoxShape.circle,
     boxShadow: [
@@ -55,7 +50,13 @@ class AvatarWidget extends StatelessWidget {
             alignment: Alignment.center,
             children: <Widget>[
               Container(
-                decoration: _whiteBorderDecoration,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.fromBorderSide(BorderSide(
+                      color: Theme.of(context).primaryColor, width: 3.0)),
+//    border:
+//        Border.fromBorderSide(BorderSide(color: Color(0xff303439), width: 3.0)),
+                ),
                 child: Container(
                   decoration: _greyBoxShadowDecoration,
                   child: CircleAvatar(
@@ -92,7 +93,9 @@ class AvatarWidget extends StatelessWidget {
                           ? user.name
                           : '${user.name.substring(0, 15)}...',
                   textScaleFactor: 0.9,
-                  style: TextStyle(fontWeight: FontWeight.w900),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                  ),
                 ),
               )
             : Container()
