@@ -23,8 +23,6 @@ dependencies:
   eva_icons_flutter:
   badges:
   timeago:
-  audioplayer:
-  path_provider:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -53,25 +51,6 @@ flutter:
   assets:
     - images/logo.png
 
-    # Assets for react icons
-    - images/like.gif
-    - images/love.gif
-    - images/haha.gif
-    - images/wow.gif
-    - images/sad.gif
-    - images/angry.gif
-    - images/angry2.png
-    - images/love2.png
-    - images/haha2.png
-    - images/wow2.png
-    - images/sad2.png
-    - images/ic_like.png
-    - images/ic_like_fill.png
-    - sounds/box_down.mp3
-    - sounds/box_up.mp3
-    - sounds/icon_choose.mp3
-    - sounds/icon_focus.mp3
-    - sounds/short_press_like.mp3
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
