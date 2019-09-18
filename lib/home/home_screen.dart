@@ -1,5 +1,5 @@
 import 'package:badges/badges.dart';
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:unihub/custom_theme.dart';
@@ -16,7 +16,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isDark = true;
-
   @override
   Widget build(BuildContext context) {
     void _changeTheme(BuildContext buildContext, MyThemeKeys key) {

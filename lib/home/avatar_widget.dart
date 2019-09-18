@@ -4,7 +4,6 @@ import 'package:unihub/models/user.dart';
 class AvatarWidget extends StatelessWidget {
   final User user;
   final VoidCallback onTap;
-  final EdgeInsetsGeometry padding;
   final bool isLarge;
   final bool isShowingUsernameLabel;
   final bool isCurrentUserStory;
@@ -12,7 +11,6 @@ class AvatarWidget extends StatelessWidget {
   const AvatarWidget({
     @required this.user,
     this.onTap,
-    this.padding = const EdgeInsets.all(8.0),
     this.isLarge = false,
     this.isShowingUsernameLabel = false,
     this.isCurrentUserStory = false,
@@ -28,12 +26,6 @@ class AvatarWidget extends StatelessWidget {
         Color(0xFFC13584), // Red-purple
       ],
     ),
-  );
-  static const _greyBoxShadowDecoration = BoxDecoration(
-    shape: BoxShape.circle,
-    boxShadow: [
-      BoxShadow(color: Colors.grey, blurRadius: 1.0, spreadRadius: 1.0)
-    ],
   );
 
   @override
@@ -53,12 +45,9 @@ class AvatarWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.fromBorderSide(BorderSide(
-                      color: Theme.of(context).primaryColor, width: 3.0)),
-//    border:
-//        Border.fromBorderSide(BorderSide(color: Color(0xff303439), width: 3.0)),
+                      color: Theme.of(context).primaryColor, width: 2.5)),
                 ),
                 child: Container(
-                  decoration: _greyBoxShadowDecoration,
                   child: CircleAvatar(
                     radius: radius,
                     backgroundImage: NetworkImage(user.imageUrl),
@@ -70,13 +59,11 @@ class AvatarWidget extends StatelessWidget {
                       right: 2.0,
                       bottom: 2.0,
                       child: Container(
-                        width: 18.0,
-                        height: 18.0,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.blue,
                         ),
-                        child: Icon(Icons.add, size: 16.0, color: Colors.white),
+                        child: Icon(Icons.add, size: 12.5, color: Colors.white),
                       ),
                     )
                   : Container()

@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
                   ? Icon(EvaIcons.heartOutline, color: Color(0xffF1A26A))
                   : Icon(EvaIcons.heartOutline, color: Colors.black),
             ],
-            backgroundColor: Theme.of(context).primaryColor,
+            backgroundColor: CustomTheme.of(context).primaryColorDark,
             animationCurve: Curves.easeOut,
             animationDuration: Duration(milliseconds: 500),
             onTap: (index) {

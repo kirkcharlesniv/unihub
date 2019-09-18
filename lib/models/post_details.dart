@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:unihub/models/post_model.dart';
 import 'package:unihub/models/user.dart';
-
-class Like {
-  final User user;
-
-  Like({@required this.user});
-}
 
 class Comment {
   String text;

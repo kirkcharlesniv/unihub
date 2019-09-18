@@ -1,13 +1,14 @@
 import 'dart:async';
 
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reaction_button/flutter_reaction_button.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:unihub/home/avatar_widget.dart';
 import 'package:unihub/home/reactions.dart';
 import 'package:unihub/models/post_model.dart';
 import 'package:unihub/models/user.dart';
+
+import 'avatar_widget.dart';
 
 class Post extends StatefulWidget {
   final PostModel post;
@@ -19,6 +20,7 @@ class Post extends StatefulWidget {
 }
 
 class _PostState extends State<Post> {
+  int reactionIndexToggled;
   final StreamController<void> _doubleTapImageEvents =
       StreamController.broadcast();
 
