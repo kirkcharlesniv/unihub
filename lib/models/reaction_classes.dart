@@ -1,6 +1,42 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reaction_button/flutter_reaction_button.dart';
+import 'package:unihub/models/user.dart';
+
+class Like {
+  final User user;
+
+  Like({@required this.user});
+}
+
+class Heart {
+  final User user;
+
+  Heart({@required this.user});
+}
+
+class Haha {
+  final User user;
+
+  Haha({@required this.user});
+}
+
+class Wow {
+  final User user;
+
+  Wow({@required this.user});
+}
+
+class Sad {
+  final User user;
+
+  Sad({@required this.user});
+}
+
+class Angry {
+  final User user;
+
+  Angry({@required this.user});
+}
 
 final facebookReactions = [
   Reaction(

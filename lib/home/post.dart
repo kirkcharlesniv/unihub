@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_reaction_button/flutter_reaction_button.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:unihub/models/post_model.dart';
-import 'package:unihub/models/reactions.dart';
+import 'package:unihub/models/reaction_classes.dart';
 import 'package:unihub/models/user.dart';
 
 import '../reusables/avatar_widget.dart';

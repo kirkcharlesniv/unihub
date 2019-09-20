@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:unihub/models/post_model.dart';
+import 'package:unihub/models/reaction_classes.dart';
 import 'package:unihub/models/user.dart';
 
 class Comment {
