@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:unihub/home/avatar_widget.dart';
 import 'package:unihub/models/user.dart';
+import 'package:unihub/reusables/avatar_widget.dart';
 
 class Stories extends StatelessWidget {
   // TODO: Replace this list of users with a global one, or move it to a global state in the app.

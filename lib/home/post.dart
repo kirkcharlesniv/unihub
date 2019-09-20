@@ -4,11 +4,11 @@ import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reaction_button/flutter_reaction_button.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:unihub/home/reactions.dart';
 import 'package:unihub/models/post_model.dart';
+import 'package:unihub/models/reactions.dart';
 import 'package:unihub/models/user.dart';
 
-import 'avatar_widget.dart';
+import '../reusables/avatar_widget.dart';
 
 class Post extends StatefulWidget {
   final PostModel post;
