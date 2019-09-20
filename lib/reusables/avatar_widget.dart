@@ -7,6 +7,7 @@ class AvatarWidget extends StatelessWidget {
   final bool isLarge;
   final bool isShowingUsernameLabel;
   final bool isCurrentUserStory;
+  final bool isTransparent;
 
   const AvatarWidget({
     @required this.user,
@@ -14,6 +15,7 @@ class AvatarWidget extends StatelessWidget {
     this.isLarge = false,
     this.isShowingUsernameLabel = false,
     this.isCurrentUserStory = false,
+    this.isTransparent = false,
   });
 
   static const _gradientBorderDecoration = BoxDecoration(
@@ -45,7 +47,10 @@ class AvatarWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.fromBorderSide(BorderSide(
-                      color: Theme.of(context).primaryColor, width: 2.5)),
+                      color: isTransparent
+                          ? Colors.transparent
+                          : Theme.of(context).primaryColor,
+                      width: 2.5)),
                 ),
                 child: Container(
                   child: CircleAvatar(

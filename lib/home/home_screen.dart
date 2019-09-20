@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:unihub/home/home_page.dart';
 import 'package:unihub/home/widgets/app_bar.dart';
-import 'package:unihub/home/widgets/home_page.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

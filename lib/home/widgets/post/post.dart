@@ -44,6 +44,7 @@ class Post extends StatelessWidget {
                   onTap: () {
                     // TODO: Expand comments section
                   },
+                  // TODO: Map comments to comments_widget
                   child: Container(
                     width: double.infinity,
                     color: Theme.of(context).primaryColorDark,

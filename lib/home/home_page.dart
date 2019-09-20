@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:unihub/home/post.dart';
 import 'package:unihub/home/stories.dart';
+import 'package:unihub/home/widgets/post/post.dart';
 import 'package:unihub/models/post_model.dart';
 import 'package:unihub/models/user.dart';
 
