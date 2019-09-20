@@ -106,7 +106,7 @@ class _CommentsModalState extends State<CommentsModal>
                             user: currentUser,
                             isTransparent: true,
                           ),
-                          Expanded(
+                          Flexible(
                             child: TextField(
                               controller: _textController,
                               decoration: InputDecoration(
@@ -125,9 +125,10 @@ class _CommentsModalState extends State<CommentsModal>
                               onPressed: () {
                                 if (_canPost) {
                                   widget.onPost(_textController.text);
-                                  _textController.text = null;
+                                  _textController.text = "";
                                   FocusScope.of(context)
                                       .requestFocus(new FocusNode());
+
                                   // Refresh the state so that it can register the new comment.
                                   setState(() {});
                                 }
