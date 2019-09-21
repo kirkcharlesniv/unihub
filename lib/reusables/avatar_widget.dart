@@ -94,9 +94,6 @@ class AvatarWidget extends StatelessWidget {
       ],
     );
 
-    return Padding(
-      padding: this.padding,
-      child: GestureDetector(child: avatar, onTap: onTap),
-    );
+    return GestureDetector(child: avatar, onTap: onTap);
   }
 }

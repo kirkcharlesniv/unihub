@@ -9,40 +9,24 @@ class Stories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.13,
-      color: Theme.of(context).primaryColorDark,
-      child: Row(
-        children: <Widget>[
-          Flexible(
-            flex: 1,
-            child: Center(
+        decoration: BoxDecoration(
+            border: Border(
+                bottom: BorderSide(color: Theme.of(context).primaryColorDark))),
+        height: MediaQuery.of(context).size.height * 0.125,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: _users.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
               child: AvatarWidget(
-                user: currentUser,
+                user: _users[index],
                 isLarge: true,
                 isShowingUsernameLabel: true,
-                isCurrentUserStory: true,
+                isCurrentUserStory: index == 0,
               ),
-            ),
-          ),
-          VerticalDivider(),
-          Flexible(
-            flex: 3,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: _users.length,
-              itemBuilder: (context, index) {
-                return Center(
-                  child: AvatarWidget(
-                    user: _users[index],
-                    isLarge: true,
-                    isShowingUsernameLabel: true,
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-    );
+            );
+          },
+        ));
   }
 }

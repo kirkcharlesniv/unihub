@@ -28,8 +28,7 @@ class _CommentsModalState extends State<CommentsModal>
 
     controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
-    scaleAnimation =
-        CurvedAnimation(parent: controller, curve: Curves.easeInOut);
+    scaleAnimation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
 
     controller.addListener(() {
       setState(() {});
