@@ -10,7 +10,7 @@ class PostModel {
   final DateTime postedAt;
   final String description;
 
-  List<Like> likes;
+  List<List> reactions;
   List<Comment> comments;
   String location;
 
@@ -19,8 +19,8 @@ class PostModel {
     return timeago.format(now.subtract(now.difference(postedAt)));
   }
 
-  bool isLikedBy(User user) {
-    return likes.any((like) => like.user.name == user.name);
+  bool isReactionsNotEmpty() {
+    return reactions.any((react) => react.isNotEmpty);
   }
 
   bool isReactedBy(User user) {
