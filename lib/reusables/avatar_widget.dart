@@ -79,22 +79,12 @@ class AvatarWidget extends StatelessWidget {
             ],
           ),
         ),
-        (isShowingUsernameLabel)
-            ? Padding(
-                padding: const EdgeInsets.only(top: 4.0),
-                child: Text(
-                  isCurrentUserStory
-                      ? 'Your Story'
-                      : (user.name.length <= 15)
-                          ? user.name
-                          : '${user.name.substring(0, 15)}...',
-                  textScaleFactor: 0.9,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-              )
-            : Container()
+        if (isShowingUsernameLabel)
+          Text(
+            isCurrentUserStory ? 'Your Story' : user.name.split(' ')[0],
+            textScaleFactor: 0.75,
+            overflow: TextOverflow.ellipsis,
+          ),
       ],
     );
 
