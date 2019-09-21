@@ -34,7 +34,9 @@ class AvatarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final radius = isLarge ? 22.0 : 14.0;
     final avatar = Column(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: (isLarge)
+          ? MainAxisAlignment.spaceBetween
+          : MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Container(
           height: radius * 2 + 9.0,
