@@ -22,10 +22,10 @@ class AvatarWidget extends StatelessWidget {
     shape: BoxShape.circle,
     gradient: SweepGradient(
       colors: [
-        Color(0xFF833AB4), // Purple
-        Color(0xFFF77737), // Orange
-        Color(0xFFE1306C), // Red-pink
-        Color(0xFFC13584), // Red-purple
+        Color(0xFF00c6ff),
+        Color(0xFF22a7f0),
+        Color(0xFF0072ff),
+        Color(0xFF00c6ff),
       ],
     ),
   );
