@@ -32,7 +32,9 @@ class AvatarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final radius = isLarge ? 22.0 : 14.0;
+    final radius = isLarge
+        ? MediaQuery.of(context).size.height * 0.03
+        : MediaQuery.of(context).size.height * 0.0225;
     final avatar = Column(
       mainAxisAlignment: (isLarge)
           ? MainAxisAlignment.spaceBetween
